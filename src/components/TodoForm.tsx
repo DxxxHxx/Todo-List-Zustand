@@ -1,3 +1,4 @@
+import { useTodoStore } from "@/store/todoState";
 import React from "react";
 
 export default function TodoForm({
@@ -9,6 +10,13 @@ export default function TodoForm({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
+  const clearTodo = useTodoStore.use.clearTodo();
+
+  const handleClearClick = () => {
+    if (!confirm("리스트의 모든 항목을 삭제하시겠습니까?")) return;
+    clearTodo();
+  };
+  
   return (
     <form
       onSubmit={onSubmit}
@@ -22,9 +30,18 @@ export default function TodoForm({
         onChange={onChange}
         maxLength={15}
       />
-      <button className="p-2 text-sm border rounded-lg hover:bg-[rgba(255,255,255,.2)]">
-        Add Item
-      </button>
+      <div className="flex gap-x-3">
+        <button className="p-2 text-sm border rounded-lg hover:bg-[rgba(255,255,255,.2)]">
+          Add Todo
+        </button>
+        <button
+          type="button"
+          className="p-2 text-sm border rounded-lg hover:bg-red-700 hover:text-white"
+          onClick={handleClearClick}
+        >
+          Clear Todo
+        </button>
+      </div>
     </form>
   );
 }

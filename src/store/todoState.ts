@@ -33,6 +33,7 @@ export const todoStore = create<ITodoStore>()(
             }
           }),
         })),
+      clearTodo: () => set({ todos: [] }),
     }),
     {
       name: "todo-storage",

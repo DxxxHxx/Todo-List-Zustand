@@ -9,7 +9,7 @@ export interface ITodoStore {
   addTodo: (content: string) => void;
   removeTodo: (todoId: number) => void;
   setTodoStatus: (todoId: number, status: TodoStatus) => void;
-
+  clearTodo: () => void;
 }
 export const TodoStatus = {
   Todo: "todo",
