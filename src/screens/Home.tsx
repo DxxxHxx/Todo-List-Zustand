@@ -3,6 +3,7 @@ import TodoForm from "./../components/TodoForm";
 import MainField from "@/components/MainField";
 import { useTodoStore } from "@/store/todoState";
 import { Link } from "react-router-dom";
+import MoveTop from "@/components/MoveTop";
 
 export default function Home() {
   const [todoContent, setTodoContent] = useState("");
@@ -29,6 +30,7 @@ export default function Home() {
         onSubmit={handleSubmit}
       />
       <MainField />
+      <MoveTop />
     </div>
   );
 }
