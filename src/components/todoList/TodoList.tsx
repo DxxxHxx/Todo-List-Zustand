@@ -2,6 +2,7 @@ import { useTodoStore } from "@/store/todoState";
 import TodoItem from "./TodoItem";
 import { useSearchParams } from "react-router-dom";
 import { ITodo, TodoStatus } from "@/types/interface";
+import EmptyList from "./EmptyList";
 
 export default function TodoList() {
   const todos = useTodoStore.use.todos();
@@ -12,7 +13,11 @@ export default function TodoList() {
     const filteredList: ITodo[] = todos.filter(
       (todo) => todo.status === status
     );
-    return filteredList.map((item) => <TodoItem {...item} key={item.id} />);
+    return filteredList.length > 0 ? (
+      filteredList.map((item) => <TodoItem {...item} key={item.id} />)
+    ) : (
+      <EmptyList />
+    );
   };
 
   const renderTodoList = () => {

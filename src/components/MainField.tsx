@@ -30,7 +30,7 @@ export default function MainField() {
           <Link to={"/?status=todo"}>
             <button
               className={`${
-                !param || param === "todo" && "bg-[rgba(255,255,255,0.2)]"
+                !param || (param === "todo" && "bg-[rgba(255,255,255,0.2)]")
               } button`}
             >
               To do
@@ -60,7 +60,7 @@ export default function MainField() {
         </button>
       </div>
 
-      {!fold && todos.length !== 0 && <TodoList />}
+      {!fold && <TodoList />}
     </div>
   );
 }
